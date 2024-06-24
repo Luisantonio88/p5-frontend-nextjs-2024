@@ -7,7 +7,7 @@ export default async function Home() {
       My app
       <div>
         {posts.map((post) => (
-          <div>
+          <div key={post.id}>
             <h1>{post.name}</h1>
             <p>{post.quote}</p>
             <p>{post.likes}, {post.dislikes}</p>
