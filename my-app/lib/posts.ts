@@ -28,3 +28,17 @@ export const dbAddPost = async (name: string, quote: string) => {
     throw new Error("Failed to add post");
   }
 };
+
+export const dbAddLike = async (id: number, updatedLikes: number) => {
+  await db.execute({
+    sql: "update posts set likes = ? where id = ?",
+    args: [updatedLikes, id],
+  });
+};
+
+export const dbAddDislike = async (id: number, updatedDislikes: number) => {
+  await db.execute({
+    sql: "update posts set dislikes = ? where id = ?",
+    args: [updatedDislikes, id],
+  });
+};
