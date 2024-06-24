@@ -12,7 +12,7 @@ export default function PostForm() {
   };
 
   return (
-    <form ref={formRef} action={addPost} className="m-5 ">
+    <form ref={formRef} action={addPost} className="m-5 text-black">
       <input
         type="text"
         name="name"
