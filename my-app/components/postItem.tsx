@@ -14,9 +14,9 @@ export default function PostItem({ post }: { post: Post }) {
       key={post.id}
       className="group inline-block p-5 m-5 shadow-lg rounded-2xl border bg-white hover:bg-teal-50 transition duration-1000 ease-in-out"
     >
-      <h1 className="font-extralight text-lg">{post.name}</h1>
+      <h1 className="font-extralight text-lg text-black">{post.name}</h1>
 
-      <p>{post.quote}</p>
+      <p className="text-black">{post.quote}</p>
       <div className="flex flex-row items-center justify-center">
         <div className="text-white font-light text-lg bg-teal-400 hover:bg-teal-500 active:bg-slate-300 transition duration-500 ease-in-out rounded-full pl-2 pr-4 inline-block mt-2 cursor-default">
           <button onClick={() => actionAddLike(post.id, post.likes)}>
