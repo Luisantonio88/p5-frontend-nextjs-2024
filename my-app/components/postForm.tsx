@@ -1,0 +1,33 @@
+"use client";
+
+import { actionAddPost } from "@/actions/postsactions";
+import { useRef } from "react";
+
+export default function PostForm() {
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const addPost = async (formData: FormData) => {
+    await actionAddPost(formData);
+    formRef.current?.reset();
+  };
+
+  return (
+    <form ref={formRef} action={addPost} className="m-5 ">
+      <input
+        type="text"
+        name="name"
+        placeholder="author name"
+        className="border p-2 pl-3 rounded-full mr-2"
+      />
+      <input
+        type="text"
+        name="quote"
+        placeholder="quote"
+        className="border p-2 pl-3 rounded-full mr-2"
+      />
+      <button className="rounded-full text-white bg-teal-400 hover:bg-teal-500 transition duration-500 ease-in-out  p-2">
+        Add Quote
+      </button>
+    </form>
+  );
+}
