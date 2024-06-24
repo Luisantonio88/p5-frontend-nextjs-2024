@@ -1,6 +1,6 @@
 "use server";
 
-import { dbAddDislike, dbAddLike, dbAddPost } from "@/lib/posts";
+import { dbAddDislike, dbAddLike, dbAddPost, dbDeletePost } from "@/lib/posts";
 import { revalidatePath } from "next/cache";
 
 export async function actionAddPost(formData: FormData) {
@@ -26,5 +26,10 @@ export async function actionAddLike(id: number, likes: number) {
 
 export async function actionAddDislike(id: number, dislikes: number) {
   await dbAddDislike(id, dislikes + 1);
+  revalidatePath("/");
+}
+
+export async function actionDeletePost(id: number) {
+  await dbDeletePost(id);
   revalidatePath("/");
 }

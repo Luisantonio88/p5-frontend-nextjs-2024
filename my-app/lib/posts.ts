@@ -42,3 +42,10 @@ export const dbAddDislike = async (id: number, updatedDislikes: number) => {
     args: [updatedDislikes, id],
   });
 };
+
+export const dbDeletePost = async (id: number) => {
+  await db.execute({
+    sql: "delete from posts where id = ?",
+    args: [id],
+  });
+};
