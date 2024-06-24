@@ -1,20 +1,25 @@
 import { dbGetPosts } from "@/lib/posts";
 import Image from "next/image";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export default async function Home() {
   const posts = await dbGetPosts();
   return (
     <main className="bg-slate-100">
-      My app
+      <h1 className="text-3xl bg-white pl-6 p-3 font-extralight text-teal-700 tracking-widest border">
+        Quote
+      </h1>
       <div>
         {posts.map((post) => (
           <div
             key={post.id}
-            className="inline-block p-5 m-5 shadow-lg rounded-2xl border bg-white"
+            className="inline-block p-5 m-5 shadow-lg rounded-2xl border bg-white hover:bg-teal-50 transition duration-1000 ease-in-out"
           >
             <h1 className="font-extralight text-lg">{post.name}</h1>
             <p>{post.quote}</p>
-            <div className="bg-slate-400 rounded-full p-1 pl-2 pr-4 inline-block mt-2">
+            <div className="text-white font-light text-lg bg-teal-400 hover:bg-teal-500 active:bg-slate-300 transition duration-500 ease-in-out rounded-full pl-2 pr-4 inline-block mt-2 cursor-default">
               <button>
                 {" "}
                 <Image
